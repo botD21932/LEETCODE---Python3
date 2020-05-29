@@ -119,6 +119,57 @@ https://leetcode.com/problems/reverse-nodes-in-k-group/
 
 https://leetcode.com/problems/reverse-nodes-in-k-group/
 
+```python
+def reverseList(self, head: ListNode) -> ListNode:
+    previous = None
+    current = head
+    while current:
+        nextTemp = current.next
+        current.next = previous
+        previous = current
+        current = nextTemp
+    return previous
+
+
+def reverseKGroup(self, head: ListNode, k: int) -> ListNode:
+    if not head or not head.next:
+        return head
+    current = head
+    for i in range(k-1):
+        if not current.next:
+            return head
+        current = current.next
+    nextTemp = current.next
+    current.next = None
+    current = self.reverseList(head)
+    head.next = self.reverseKGroup(nextTemp, k)
+    return current
+
+```
+
+```python
+def reverseKGroup(self, head: ListNode, k: int) -> ListNode:
+    counter = 0
+    current = head
+    previous = None
+    stack = [None] * k
+    while current and k > 1:
+        stack[counter % k] = current
+        current = current.next
+        counter = counter + 1
+        if counter % k == 0:
+            for i in range(len(stack)-1, 0, -1):
+                stack[i].next = stack[i-1]
+            stack[0].next = current
+            if not previous:
+                head = stack[-1]
+            else:
+                previous.next = stack[-1]
+            previous = stack[0]
+    return head
+
+```
+
 ## Rotate List
 
 https://leetcode.com/problems/rotate-list/
