@@ -71,6 +71,38 @@ https://leetcode.com/problems/merge-two-sorted-lists/
 
 https://leetcode.com/problems/merge-k-sorted-lists/
 
+```python
+def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+    head = ListNode(0)
+    pointer = head
+    while l1 and l2:
+        if l1.val < l2.val:
+            pointer.next = l1
+            l1 = l1.next
+        else:
+            pointer.next = l2
+            l2 = l2.next
+        pointer = pointer.next
+    if not l1:
+        pointer.next = l2
+    if not l2:
+        pointer.next = l1
+    return head.next
+
+
+def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+    if lists == []:
+        return
+    amount = len(lists)
+    interval = 1
+    while interval < amount:
+        for i in range(0, amount - interval, interval * 2):
+            lists[i] = self.mergeTwoLists(lists[i], lists[i + interval])
+        interval *= 2
+    return lists[0]
+
+```
+
 ## Swap Nodes in Pairs
 
 https://leetcode.com/problems/swap-nodes-in-pairs/
