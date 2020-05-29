@@ -59,6 +59,38 @@ class ListNode:
 
 https://leetcode.com/problems/add-two-numbers/
 
+```python
+def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+    fakehead = ListNode(0)
+    firstPointer = l1
+    secondPointer = l2
+    current = fakehead
+    carry = 0
+    while firstPointer and secondPointer:
+        sum = carry + firstPointer.val + secondPointer.val
+        carry = sum // 10
+        current.next = ListNode(sum % 10)
+        current = current.next
+        firstPointer = firstPointer.next
+        secondPointer = secondPointer.next
+    while firstPointer:
+        sum = carry + firstPointer.val
+        carry = sum // 10
+        current.next = ListNode(sum % 10)
+        current = current.next
+        firstPointer = firstPointer.next
+    while secondPointer:
+        sum = carry + secondPointer.val
+        carry = sum // 10
+        current.next = ListNode(sum % 10)
+        current = current.next
+        secondPointer = secondPointer.next
+    if carry > 0:
+        current.next = ListNode(carry)
+    return fakehead.next
+
+```
+
 ## Remove Nth Node From End of List
 
 https://leetcode.com/problems/remove-nth-node-from-end-of-list/
