@@ -63,6 +63,19 @@ https://leetcode.com/problems/add-two-numbers/
 
 https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 
+def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
+    start = ListNode(0)
+    start.next = head
+    firstPoint = start
+    secondPoint = start
+    for i in range(1,n+2):
+        firstPoint = firstPoint.next
+    while firstPoint:
+        firstPoint = firstPoint.next
+        secondPoint = secondPoint.next
+    secondPoint.next = secondPoint.next.next
+    return start.next
+
 ## Merge Two Sorted Lists
 
 https://leetcode.com/problems/merge-two-sorted-lists/
