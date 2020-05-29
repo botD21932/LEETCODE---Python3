@@ -123,6 +123,31 @@ https://leetcode.com/problems/reverse-nodes-in-k-group/
 
 https://leetcode.com/problems/rotate-list/
 
+```python
+def rotateRight(self, head: ListNode, k: int) -> ListNode:
+    if not head or not head.next or k == 0:
+        return head
+    firstPoint = head
+    secondPoint = head
+    testLength = 0
+    for i in range(k):
+        if not firstPoint:
+            print(testLength)
+            return self.rotateRight(head, k % testLength)
+        firstPoint = firstPoint.next
+        testLength = testLength + 1
+    if not firstPoint:
+        return head
+    while firstPoint.next:
+        firstPoint = firstPoint.next
+        secondPoint = secondPoint.next
+    nextTemp = secondPoint.next
+    secondPoint.next = None
+    firstPoint.next = head
+    return nextTemp
+
+```
+
 ## Remove Duplicates from Sorted List II
 
 https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/
