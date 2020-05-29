@@ -75,6 +75,19 @@ https://leetcode.com/problems/merge-k-sorted-lists/
 
 https://leetcode.com/problems/swap-nodes-in-pairs/
 
+```python
+def swapPairs(self, head: ListNode) -> ListNode:
+    if not head or not head.next:
+        return head
+    firstNode = head
+    secondNode = head.next
+    nextTemp = secondNode.next
+    firstNode.next = self.swapPairs(nextTemp)
+    secondNode.next = firstNode
+    return secondNode
+
+```
+
 ## Reverse Nodes in k-Group
 
 https://leetcode.com/problems/reverse-nodes-in-k-group/
