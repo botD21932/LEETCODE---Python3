@@ -67,6 +67,26 @@ https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 
 https://leetcode.com/problems/merge-two-sorted-lists/
 
+```python
+def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+    head = ListNode(0)
+    pointer = head
+    while l1 and l2:
+        if l1.val < l2.val:
+            pointer.next = l1
+            l1 = l1.next
+        else:
+            pointer.next = l2
+            l2 = l2.next
+        pointer = pointer.next
+    if not l1:
+        pointer.next = l2
+    if not l2:
+        pointer.next = l1
+    return head.next
+ 
+```
+
 ## Merge k Sorted Lists
 
 https://leetcode.com/problems/merge-k-sorted-lists/
