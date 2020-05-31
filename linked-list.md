@@ -414,6 +414,17 @@ https://leetcode.com/problems/linked-list-components/
 
 https://leetcode.com/problems/middle-of-the-linked-list/
 
+```python
+def middleNode(self, head: ListNode) -> ListNode:
+    firstPointer = head
+    secondPointer = head
+    while secondPointer and secondPointer.next:
+        firstPointer = firstPointer.next
+        secondPointer = secondPointer.next.next
+    return firstPointer
+
+```
+
 ## Next Greater Node In Linked List
 
 https://leetcode.com/problems/next-greater-node-in-linked-list/
