@@ -210,6 +210,23 @@ def sortList(self, head: ListNode) -> ListNode:
 
 https://leetcode.com/problems/intersection-of-two-linked-lists/
 
+```python
+def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
+    pointA = headA
+    pointB = headB
+    while(pointA != pointB):
+        if not pointA:
+            pointA = headB
+        else:
+            pointA = pointA.next
+        if not pointB:
+            pointB = headA
+        else:
+            pointB = pointB.next
+    return pointA
+
+```
+
 ## Remove Linked List Elements
 
 https://leetcode.com/problems/remove-linked-list-elements/
