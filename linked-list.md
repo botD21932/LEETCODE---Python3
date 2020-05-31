@@ -191,6 +191,23 @@ https://leetcode.com/problems/delete-node-in-a-linked-list/
 
 https://leetcode.com/problems/odd-even-linked-list/
 
+```python
+def oddEvenList(self, head: ListNode) -> ListNode:
+    if not head:
+        return head
+    oddCurrent = head
+    evenHead = head.next
+    evenCurrent = head.next
+    while oddCurrent.next and evenCurrent.next:
+        oddCurrent.next = oddCurrent.next.next
+        oddCurrent = oddCurrent.next
+        evenCurrent.next = evenCurrent.next.next
+        evenCurrent = evenCurrent.next
+    oddCurrent.next = evenHead
+    return head
+
+```
+
 ## Plus One Linked List
 
 https://leetcode.com/problems/plus-one-linked-list
