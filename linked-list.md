@@ -323,6 +323,19 @@ https://leetcode.com/problems/remove-linked-list-elements/
 
 https://leetcode.com/problems/reverse-linked-list/
 
+```python
+def reverseList(self, head: ListNode) -> ListNode:
+    previous = None
+    current = head
+    while current:
+        nextTemp = current.next
+        current.next = previous
+        previous = current
+        current = nextTemp
+    return previous
+
+```
+
 ## Palindrome Linked List
 
 https://leetcode.com/problems/palindrome-linked-list/
