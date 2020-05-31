@@ -175,6 +175,22 @@ https://leetcode.com/problems/intersection-of-two-linked-lists/
 
 https://leetcode.com/problems/remove-linked-list-elements/
 
+```python
+def removeElements(self, head: ListNode, val: int) -> ListNode:
+    if not head:
+        return head
+    while head and head.val == val:
+        head = head.next
+    current = head
+    while current and current.next:
+        if current.next.val == val:
+            current.next = current.next.next
+        else:
+            current = current.next
+    return head
+
+```
+
 ## Reverse Linked List
 
 https://leetcode.com/problems/reverse-linked-list/
