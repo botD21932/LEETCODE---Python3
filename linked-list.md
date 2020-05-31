@@ -159,6 +159,54 @@ https://leetcode.com/problems/linked-list-cycle-ii/
 
 https://leetcode.com/problems/reorder-list/
 
+```python
+def reorderList(self, head: ListNode) -> None:
+    if not head:
+        return head
+    nodeList = []
+    currentNode = head
+    begin = 0
+    end = -1
+    while currentNode:
+        nodeList.append(currentNode)
+        currentNode = currentNode.next
+        end = end + 1
+    while begin < end:
+        nodeList[begin].next = nodeList[end]
+        begin = begin + 1
+        if begin >= end:
+            break
+        nodeList[end].next = nodeList[begin]
+        end = end - 1
+    nodeList[end].next = None
+
+
+def reorderList(self, head: ListNode) -> None:
+    if not head:
+        return head
+    fastPoint = head
+    slowPoint = head
+    while fastPoint and fastPoint.next:
+        slowPoint = slowPoint.next
+        fastPoint = fastPoint.next.next
+    tail = slowPoint
+    previous = None
+    half = slowPoint.next
+    while half:
+        slowPoint.next = previous
+        previous = slowPoint
+        slowPoint = half
+        half = half.next
+    slowPoint.next = previous
+    current = None
+    while current != tail:
+        current = head.next
+        head.next = slowPoint
+        head = slowPoint
+        slowPoint = current
+
+```
+
 ## Insertion Sort List
 
 https://leetcode.com/problems/insertion-sort-list/
