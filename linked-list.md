@@ -127,6 +127,27 @@ https://leetcode.com/problems/rotate-list/
 
 https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/
 
+```python
+def deleteDuplicates(self, head: ListNode) -> ListNode:
+    if not head or not head.next:
+        return head
+    current = head
+    while current and current.next:
+        if current.val == current.next.val:
+            while current.next and current.val == current.next.val:
+                current.next = current.next.next
+            if current == head:
+                head = current.next
+            else:
+                previous.next = current.next
+                current = current.next
+        else:
+            previous = current
+            current = current.next
+    return head
+
+```
+
 ## Remove Duplicates from Sorted List
 
 https://leetcode.com/problems/remove-duplicates-from-sorted-list/
