@@ -403,6 +403,28 @@ https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked
 
 https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/
 
+```python
+def flatten(self, head: 'Node') -> 'Node':
+    if not head:
+        return head
+    if head.child:
+        tail = head.next
+        head.next = self.flatten(head.child)
+        head.child = None
+        if head.next:
+            head.next.prev = head
+        current = head.next
+        while current and current.next:
+            current = current.next
+        current.next = self.flatten(tail)
+        if current.next:
+            current.next.prev = current
+    else:
+        head.next = self.flatten(head.next)
+    return head
+
+```
+
 ## Add Two Numbers II
 
 https://leetcode.com/problems/add-two-numbers-ii/
