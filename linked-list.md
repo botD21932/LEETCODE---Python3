@@ -383,6 +383,13 @@ def isPalindrome(self, head: ListNode) -> bool:
 
 https://leetcode.com/problems/delete-node-in-a-linked-list/
 
+```python
+def deleteNode(self, node):
+    node.val = node.next.val
+    node.next = node.next.next
+
+```
+
 ## Odd Even Linked List
 
 https://leetcode.com/problems/odd-even-linked-list/
