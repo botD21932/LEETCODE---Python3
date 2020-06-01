@@ -135,6 +135,30 @@ https://leetcode.com/problems/remove-duplicates-from-sorted-list/
 
 https://leetcode.com/problems/partition-list/
 
+```python
+def partition(self, head: ListNode, x: int) -> ListNode:
+    if not head:
+        return head
+    lowerHead = ListNode(0)
+    currentLower = lowerHead
+    biggerHead = ListNode(0)
+    currentBigger = biggerHead
+    while head:
+        if head.val < x:
+            currentLower.next = ListNode(head.val)
+            currentLower = currentLower.next
+        else:
+            currentBigger.next = ListNode(head.val)
+            currentBigger = currentBigger.next
+        head = head.next
+    if lowerHead.next:
+        currentLower.next = biggerHead.next
+        return lowerHead.next
+    else:
+        return biggerHead.next
+
+```
+
 ## Reverse Linked List II
 
 https://leetcode.com/problems/reverse-linked-list-ii/
