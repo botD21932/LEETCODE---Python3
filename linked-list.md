@@ -442,6 +442,24 @@ def middleNode(self, head: ListNode) -> ListNode:
 
 https://leetcode.com/problems/next-greater-node-in-linked-list/
 
+```python
+def nextLargerNodes(self, head: ListNode) -> List[int]:
+    listnode = []
+    length = 0
+    while head:
+        listnode.append(head.val)
+        head = head.next
+        length = length + 1
+    result = [0]*length
+    stack = []
+    for i in range(length):
+        while stack and listnode[stack[-1]] < listnode[i]:
+            result[stack.pop()] = listnode[i]
+        stack.append(i)
+    return result
+
+```
+
 ## Remove Zero Sum Consecutive Nodes from Linked List
 
 https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/
