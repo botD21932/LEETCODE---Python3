@@ -511,6 +511,18 @@ https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list
 
 https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/
 
+```python
+def getDecimalValue(self, head: ListNode) -> int:
+    if not head:
+        return 0
+    counter = 0
+    while head:
+        counter = 2*counter + head.val
+        head = head.next
+    return counter
+
+```
+
 ## Linked List in Binary Tree
 
 https://leetcode.com/problems/linked-list-in-binary-tree/
