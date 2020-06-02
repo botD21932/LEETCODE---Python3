@@ -163,6 +163,18 @@ https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/
 
 https://leetcode.com/problems/remove-duplicates-from-sorted-list/
 
+```python
+def deleteDuplicates(self, head: ListNode) -> ListNode:
+    current = head
+    while current and current.next:
+        if current.val == current.next.val:
+            current.next = current.next.next
+        else:
+            current = current.next
+    return head
+
+```
+
 ## Partition List
 
 https://leetcode.com/problems/partition-list/
