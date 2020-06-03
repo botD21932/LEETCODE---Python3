@@ -215,6 +215,12 @@ https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/
 
 https://leetcode.com/problems/copy-list-with-random-pointer/
 
+```python
+def copyRandomList(self, head: 'Node') -> 'Node':
+    return copy.deepcopy(head)
+
+```
+
 ## Linked List Cycle
 
 https://leetcode.com/problems/linked-list-cycle/
