@@ -211,6 +211,27 @@ https://leetcode.com/problems/reverse-linked-list-ii/
 
 https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/
 
+```python
+def sortedListToBST(self, head: ListNode) -> TreeNode:
+    if not head:
+        return None
+    if not head.next:
+        return TreeNode(head.val)
+    slowPointer = head
+    fastPointer = head
+    while fastPointer and fastPointer.next:
+        fastPointer = fastPointer.next.next
+        if not fastPointer or not fastPointer.next:
+            rightPart = slowPointer.next.next
+            result = TreeNode(slowPointer.next.val)
+            slowPointer.next = None
+        slowPointer = slowPointer.next
+    result.right = self.sortedListToBST(rightPart)
+    result.left = self.sortedListToBST(head)
+    return result
+
+```
+
 ## Copy List with Random Pointer
 
 https://leetcode.com/problems/copy-list-with-random-pointer/
