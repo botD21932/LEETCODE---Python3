@@ -511,6 +511,30 @@ https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list/
 
 https://leetcode.com/problems/split-linked-list-in-parts/
 
+```python
+    def splitListToParts(self, root: ListNode, k: int) -> List[ListNode]:
+        current = root
+        counter = 0
+        while current:
+            current = current.next
+            counter = counter + 1
+        width, add = divmod(counter, k)
+        result = []
+        current = root
+        for i in range(k):
+            head = current
+            for j in range(width + (i < add) - 1):
+                if current: 
+                    current = current.next
+            if current:
+                nextTemp = current.next
+                current.next = None
+                current = nextTemp
+            result.append(head)
+        return result
+  
+  ```
+
 ## Linked List Components
 
 https://leetcode.com/problems/linked-list-components/
