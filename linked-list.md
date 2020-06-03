@@ -557,3 +557,21 @@ def getDecimalValue(self, head: ListNode) -> int:
 ## Linked List in Binary Tree
 
 https://leetcode.com/problems/linked-list-in-binary-tree/
+
+```python
+def isSubPath(self, head: ListNode, root: TreeNode) -> bool:
+    if not head:
+        return True
+    if not root:
+        return False
+    return self.helper(head, root) or self.isSubPath(head, root.left) or self.isSubPath(head, root.right)
+
+
+def helper(self, head: ListNode, root: TreeNode) -> bool:
+    if not head:
+        return True
+    if not root:
+        return False
+    return (head.val == root.val) and (self.helper(head.next, root.left) or self.helper(head.next, root.right))
+
+```
