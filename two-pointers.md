@@ -91,6 +91,22 @@ https://leetcode.com/problems/4sum
 
 https://leetcode.com/problems/remove-nth-node-from-end-of-list
 
+```python
+def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
+    start = ListNode(0)
+    start.next = head
+    firstPoint = start
+    secondPoint = start
+    for i in range(1, n+2):
+        firstPoint = firstPoint.next
+    while firstPoint:
+        firstPoint = firstPoint.next
+        secondPoint = secondPoint.next
+    secondPoint.next = secondPoint.next.next
+    return start.next
+
+```
+
 ## Remove Duplicates from Sorted Array
 
 https://leetcode.com/problems/remove-duplicates-from-sorted-array
