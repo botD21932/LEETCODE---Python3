@@ -562,6 +562,30 @@ https://leetcode.com/problems/next-greater-node-in-linked-list/
 
 https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/
 
+```python
+def removeZeroSumSublists(self, head: ListNode) -> ListNode:
+    fakeHead = ListNode(-1)
+    fakeHead.next = head
+    sums = {0: fakeHead}
+    current = fakeHead.next
+    currentSum = 0
+    while current:
+        currentSum = currentSum + current.val
+        if currentSum in sums:
+            deleteNode = sums[currentSum].next
+            sums[currentSum].next = current.next
+            deleteSum = currentSum
+            while deleteNode.next != current.next:
+                deleteSum = deleteSum + deleteNode.val
+                del sums[deleteSum]
+                deleteNode = deleteNode.next
+        else:
+            sums[currentSum] = current
+        current = current.next
+    return fakeHead.next
+
+```
+
 ## Convert Binary Number in a Linked List to Integer
 
 https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/
