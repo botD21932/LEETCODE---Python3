@@ -163,6 +163,45 @@ https://leetcode.com/problems/minimum-size-subarray-sum
 
 https://leetcode.com/problems/palindrome-linked-list
 
+```python
+def reverseList(self, head: ListNode) -> ListNode:
+    previous = None
+    current = head
+    while current:
+        nextTemp = current.next
+        current.next = previous
+        previous = current
+        current = nextTemp
+    return previous
+
+
+def isEqual(self, firstHalf: ListNode, secondHalf: ListNode) -> bool:
+    while secondHalf:
+        if secondHalf.val != firstHalf.val:
+            return False
+        secondHalf = secondHalf.next
+        firstHalf = firstHalf.next
+    return True
+
+
+def isPalindrome(self, head: ListNode) -> bool:
+    if not head or not head.next:
+        return True
+    firstPoint = head
+    secondPoint = head
+    while secondPoint.next and secondPoint.next.next:
+        firstPoint = firstPoint.next
+        secondPoint = secondPoint.next.next
+    if not secondPoint.next:
+        secondHalf = copy.copy(firstPoint)
+    else:
+        secondHalf = copy.copy(firstPoint.next)
+    firstPoint.next = None
+    firstHalf = self.reverseList(head)
+    return self.isEqual(firstHalf, secondHalf)
+
+```
+
 ## 3Sum Smaller
 
 https://leetcode.com/problems/3sum-smaller
