@@ -143,6 +143,24 @@ https://leetcode.com/problems/valid-palindrome
 
 https://leetcode.com/problems/linked-list-cycle
 
+```python
+def hasCycle(self, head: ListNode) -> bool:
+    if not head:
+        return False
+    slowPointer = head
+    fastPointer = head.next
+    while fastPointer and fastPointer != slowPointer:
+        fastPointer = fastPointer.next
+        if not fastPointer:
+            return False
+        slowPointer = slowPointer.next
+        fastPointer = fastPointer.next
+    if slowPointer == fastPointer:
+        return True
+    return False
+
+```
+
 ## Linked List Cycle II
 
 https://leetcode.com/problems/linked-list-cycle-ii
