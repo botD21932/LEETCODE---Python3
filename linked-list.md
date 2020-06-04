@@ -503,6 +503,88 @@ https://leetcode.com/problems/add-two-numbers-ii/
 
 https://leetcode.com/problems/design-linked-list/
 
+```python
+class Node:
+    def __init__(self, val):
+        self.val = val
+
+
+class MyLinkedList:
+
+    def __init__(self):
+        self.head = self.tail = None
+
+    def get(self, index: int) -> int:
+        current = self.head
+        while current and current != self.tail and index:
+            current = current.next
+            index -= 1
+        if current and not index:
+            return current.val
+        return -1
+
+    def addFirst(self, val: int) -> None:
+        node = Node(val)
+        self.head = self.tail = node.next = node.pre = node
+
+    def addAtHead(self, val: int) -> None:
+        if not self.head:
+            return self.addFirst(val)
+        node = Node(val)
+        node.next = self.head
+        node.pre = self.tail
+        self.tail.next = self.head.pre = node
+        self.head = node
+
+    def addAtTail(self, val: int) -> None:
+        if not self.head:
+            return self.addFirst(val)
+        node = Node(val)
+        node.next = self.head
+        node.pre = self.tail
+        self.tail.next = self.head.pre = node
+        self.tail = node
+
+    def addAtIndex(self, index: int, val: int) -> None:
+        if index == 0:
+            return self.addAtHead(val)
+        if not self.head:
+            return
+        index = index - 1
+        current = self.head
+        while current and current != self.tail and index:
+            current = current.next
+            index = index - 1
+        if index > 0:
+            return
+        node = Node(val)
+        node.next = current.next
+        node.pre = current
+        current.next.pre = node
+        current.next = node
+        if current == self.tail:
+            self.tail = node
+
+    def deleteAtIndex(self, index: int) -> None:
+        if not self.head:
+            return
+        if self.head == self.tail and not index:
+            self.head = self.tail = None
+            return
+        current = self.head
+        while current and current != self.tail and index:
+            current = current.next
+            index = index - 1
+        if not index:
+            current.pre.next = current.next
+            current.next.pre = current.pre
+            if current == self.head:
+                self.head = current.next
+            if current == self.tail:
+                self.tail = current.pre
+
+```
+
 ## Insert into a Sorted Circular Linked List
 
 https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list/
