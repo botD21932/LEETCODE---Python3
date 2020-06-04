@@ -115,6 +115,30 @@ https://leetcode.com/problems/trapping-rain-water
 
 https://leetcode.com/problems/rotate-list
 
+```python
+def rotateRight(self, head: ListNode, k: int) -> ListNode:
+    if not head or not head.next or k == 0:
+        return head
+    firstPoint = head
+    secondPoint = head
+    testLength = 0
+    for i in range(k):
+        if not firstPoint:
+            return self.rotateRight(head, k % testLength)
+        firstPoint = firstPoint.next
+        testLength = testLength + 1
+    if not firstPoint:
+        return head
+    while firstPoint.next:
+        firstPoint = firstPoint.next
+        secondPoint = secondPoint.next
+    nextTemp = secondPoint.next
+    secondPoint.next = None
+    firstPoint.next = head
+    return nextTemp
+    
+```
+
 ## Sort Colors
 
 https://leetcode.com/problems/sort-colors
