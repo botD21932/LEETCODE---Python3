@@ -71,6 +71,25 @@
 
 https://leetcode.com/problems/longest-substring-without-repeating-characters
 
+```python
+def lengthOfLongestSubstring(self, s: str) -> int:
+    if not s:
+        return 0
+    maxString = [s[0]]
+    maxVal = 1
+    for i in range(1, len(s)):
+        if not s[i] in maxString:
+            maxString.append(s[i])
+            if len(maxString) > maxVal:
+                maxVal = maxVal + 1
+        else:
+            while s[i] in maxString:
+                maxString.pop(0)
+            maxString.append(s[i])
+    return maxVal
+
+````
+
 ## Container With Most Water
 
 https://leetcode.com/problems/container-with-most-water
