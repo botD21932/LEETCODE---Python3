@@ -75,6 +75,23 @@ https://leetcode.com/problems/longest-substring-without-repeating-characters
 
 https://leetcode.com/problems/container-with-most-water
 
+```python
+def maxArea(self, height: List[int]) -> int:
+    if not height:
+        return 0
+    leftLine = 0
+    rightLine = len(height) - 1
+    currentVolume = min(height[leftLine], height[rightLine])*(rightLine - leftLine)
+    while leftLine < rightLine:
+        currentVolume = max(currentVolume, min(height[leftLine], height[rightLine])*(rightLine - leftLine))
+        if height[leftLine] < height[rightLine]:
+            leftLine = leftLine + 1
+        else:
+            rightLine = rightLine - 1
+    return currentVolume
+
+```
+
 ## 3Sum
 
 https://leetcode.com/problems/3sum
