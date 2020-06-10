@@ -83,6 +83,25 @@ https://leetcode.com/problems/3sum
 
 https://leetcode.com/problems/3sum-closest
 
+```python
+def threeSumClosest(self, nums: List[int], target: int) -> int:
+    nums.sort()
+    currentSum = float('inf')
+    for first in range(len(nums) - 2):
+        second = first + 1
+        third = len(nums) - 1
+        while second < third:
+            summary = nums[first] + nums[second] + nums[third]
+            if abs(currentSum - target) > abs(summary - target):
+                currentSum = summary
+            if summary < target:
+                second = second + 1
+            else:
+                third = third - 1
+    return currentSum
+    
+```
+    
 ## 4Sum
 
 https://leetcode.com/problems/4sum
