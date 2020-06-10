@@ -87,6 +87,34 @@ https://leetcode.com/problems/3sum-closest
 
 https://leetcode.com/problems/4sum
 
+```python
+def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+    nums.sort()
+    result = []
+    for first in range(len(nums) - 3):
+        for fourth in range(len(nums) - 1, first + 2, -1):
+            second = first + 1
+            third = fourth - 1
+            while second < third:
+                summary = nums[first] + nums[second] + nums[third] + nums[fourth]
+                if summary < target:
+                    second = second + 1
+                elif summary > target:
+                    third = third - 1
+                else:
+                    add = [nums[first], nums[second], nums[third], nums[fourth]]
+                    if add not in result:
+                        result.append(add)
+                    while second < third and nums[second] == nums[second + 1]:
+                        second = second + 1
+                    while second < third and nums[third] == nums[third - 1]:
+                        third = third - 1
+                    second = second + 1
+                    third = third - 1
+    return result
+
+```
+
 ## Remove Nth Node From End of List
 
 https://leetcode.com/problems/remove-nth-node-from-end-of-list
