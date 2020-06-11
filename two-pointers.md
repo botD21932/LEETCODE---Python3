@@ -103,6 +103,22 @@ https://leetcode.com/problems/remove-element
 
 https://leetcode.com/problems/implement-strstr
 
+```python
+def strStr(self, haystack: str, needle: str) -> int:
+    if not str or not needle:
+        return 0
+    for i in range(len(haystack) - len(needle) + 1):
+        if haystack[i] == needle[0]:
+            for j in range(len(needle)):
+                if haystack[i + j] != needle[j]:
+                    i = j
+                    break
+                if j == len(needle) - 1:
+                    return i
+    return -1
+
+```
+
 ## Substring with Concatenation of All Words
 
 https://leetcode.com/problems/substring-with-concatenation-of-all-words
