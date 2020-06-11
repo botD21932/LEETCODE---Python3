@@ -187,6 +187,14 @@ https://leetcode.com/problems/reverse-vowels-of-a-string
 
 https://leetcode.com/problems/intersection-of-two-arrays
 
+```python
+def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+    set1 = set(nums1)
+    set2 = set(nums2)
+    return list(set1 & set2)
+
+```
+
 ## Intersection of Two Arrays II
 
 https://leetcode.com/problems/intersection-of-two-arrays-ii
