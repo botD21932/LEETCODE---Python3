@@ -107,6 +107,28 @@ https://leetcode.com/problems/implement-strstr
 
 https://leetcode.com/problems/substring-with-concatenation-of-all-words
 
+```python
+def findSubstring(self, s: str, words: List[str]) -> List[int]:
+    if not words:
+        return []
+    wordLength = len(words[0])
+    concatLength = wordLength * len(words)
+    wordsStack = copy.copy(words)
+    result = []
+    for i in range(len(s) - concatLength + 1):
+        for j in range(len(words)):
+            currentWord = s[i + j * wordLength: i + (j + 1) * wordLength]
+            if currentWord in wordsStack:
+                wordsStack.remove(currentWord)
+            else:
+                break
+        if not wordsStack:
+            result.append(i)
+        wordsStack = copy.copy(words)
+    return result
+
+```
+
 ## Trapping Rain Water
 
 https://leetcode.com/problems/trapping-rain-water
