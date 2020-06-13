@@ -119,6 +119,24 @@ https://leetcode.com/problems/rotate-list
 
 https://leetcode.com/problems/sort-colors
 
+```python
+def sortColors(self, nums: List[int]) -> None:
+    i = 0
+    j = 0
+    n = len(nums)-1
+    while j <= n:
+        if nums[j] < 1:
+            nums[i], nums[j] = nums[j], nums[i]
+            i = i + 1
+            j = j + 1
+        elif nums[j] > 1:
+            nums[j], nums[n] = nums[n], nums[j]
+            n = n - 1
+        else:
+            j = j + 1
+
+```
+
 ## Minimum Window Substring
 
 https://leetcode.com/problems/minimum-window-substring
