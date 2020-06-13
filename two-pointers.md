@@ -251,6 +251,22 @@ https://leetcode.com/problems/push-dominoes
 
 https://leetcode.com/problems/backspace-string-compare
 
+```python
+def toString(self, S: str) -> str:
+    result = []
+    for elem in S:
+        if elem != '#':
+            result.append(elem)
+        elif result:
+            result.pop()
+    return "".join(result)
+
+
+def backspaceCompare(self, S: str, T: str) -> bool:
+    return self.toString(S) == self.toString(T)
+
+```
+
 ## Longest Mountain in Array
 
 https://leetcode.com/problems/longest-mountain-in-array
