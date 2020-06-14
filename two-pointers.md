@@ -271,6 +271,30 @@ https://leetcode.com/problems/3sum-with-multiplicity
 
 https://leetcode.com/problems/long-pressed-name
 
+```python
+def isLongPressedName(self, name: str, typed: str) -> bool:
+    firstPoint = secondPoint = 0
+    while secondPoint < len(typed):
+        if firstPoint < len(name):
+            previousLetter = name[firstPoint]
+        else:
+            return False
+        while firstPoint < len(name) and secondPoint < len(typed) and name[firstPoint] == typed[secondPoint]:
+            previousLetter = name[firstPoint]
+            firstPoint = firstPoint + 1
+            secondPoint = secondPoint + 1
+        if secondPoint < len(typed) and typed[secondPoint] != previousLetter:
+            return False
+        else:
+            while secondPoint < len(typed) and typed[secondPoint] == previousLetter:
+                secondPoint = secondPoint + 1
+    if firstPoint == len(name):
+        return True
+    else:
+        return False
+
+```
+
 ## Binary Subarrays With Sum
 
 https://leetcode.com/problems/binary-subarrays-with-sum
