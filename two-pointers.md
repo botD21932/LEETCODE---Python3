@@ -255,6 +255,24 @@ https://leetcode.com/problems/backspace-string-compare
 
 https://leetcode.com/problems/longest-mountain-in-array
 
+```python
+def longestMountain(self, A: List[int]) -> int:
+    length = len(A)
+    result = base = 0
+    while base < length:
+        end = base
+        if end + 1 < length and A[end] < A[end + 1]:
+            while end + 1 < length and A[end] < A[end + 1]:
+                end = end + 1
+            if end + 1 < length and A[end] > A[end + 1]:
+                while end + 1 < length and A[end] > A[end + 1]:
+                    end = end + 1
+                result = max(result, end - base + 1)
+        base = max(end, base + 1)
+    return result
+
+```
+
 ## Boats to Save People
 
 https://leetcode.com/problems/boats-to-save-people
