@@ -279,6 +279,12 @@ https://leetcode.com/problems/binary-subarrays-with-sum
 
 https://leetcode.com/problems/squares-of-a-sorted-array
 
+```python
+def sortedSquares(self, A: List[int]) -> List[int]:
+    return sorted([x*x for x in A])
+
+```
+
 ## Interval List Intersections
 
 https://leetcode.com/problems/interval-list-intersections
