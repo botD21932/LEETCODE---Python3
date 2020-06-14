@@ -275,6 +275,20 @@ https://leetcode.com/problems/long-pressed-name
 
 https://leetcode.com/problems/binary-subarrays-with-sum
 
+```python
+def numSubarraysWithSum(self, A: List[int], S: int) -> int:
+    l = [0]
+    for elem in A:
+        l.append(l[-1] + elem)
+    count = collections.Counter()
+    result = 0
+    for elem in l:
+        result = result + count[elem]
+        count[elem + S] = count[elem + S] + 1
+    return result
+
+```
+
 ## Squares of a Sorted Array
 
 https://leetcode.com/problems/squares-of-a-sorted-array
