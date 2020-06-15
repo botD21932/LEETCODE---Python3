@@ -235,6 +235,20 @@ https://leetcode.com/problems/candy-crush
 
 https://leetcode.com/problems/partition-labels
 
+```python
+def partitionLabels(self, S):
+    last = {c: i for i, c in enumerate(S)}
+    j = anchor = 0
+    answer = []
+    for i, c in enumerate(S):
+        j = max(j, last[c])
+        if i == j:
+            answer.append(i - anchor + 1)
+            anchor = i + 1
+    return answer
+
+```
+
 ## Most Profit Assigning Work
 
 https://leetcode.com/problems/most-profit-assigning-work
