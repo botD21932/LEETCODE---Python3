@@ -283,6 +283,30 @@ https://leetcode.com/problems/squares-of-a-sorted-array
 
 https://leetcode.com/problems/interval-list-intersections
 
+```python
+def isIntersected(self, A: List[int], B: List[int]) -> List[int]:
+    if max(A[0], B[0]) <= min(A[1], B[1]):
+        return [max(A[0], B[0]), min(A[1], B[1])]
+    else:
+        return None
+
+
+def intervalIntersection(self, A: List[List[int]], B: List[List[int]]) -> List[List[int]]:
+    if not A or not B:
+        return []
+    i = j = 0
+    result = []
+    while i < len(A) and j < len(B):
+        if self.isIntersected(A[i], B[j]):
+            result.append(self.isIntersected(A[i], B[j]))
+        if A[i][1] < B[j][1]:
+            i = i + 1
+        else:
+            j = j + 1
+    return result
+
+```
+
 ## Subarrays with K Different Integers
 
 https://leetcode.com/problems/subarrays-with-k-different-integers
