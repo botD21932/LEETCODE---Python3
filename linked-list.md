@@ -367,6 +367,33 @@ def reorderList(self, head: ListNode) -> None:
 
 https://leetcode.com/problems/insertion-sort-list/
 
+```python
+def bump(self, head: ListNode, elem: ListNode) -> ListNode:
+    current = head
+    while current.next and current.next.val <= elem.val:
+        current = current.next
+    elem.next = current.next
+    current.next = elem
+    return head
+
+
+def insertionSortList(self, head: ListNode) -> ListNode:
+    if not head or not head.next:
+        return head
+    fakeHead = ListNode(0)
+    sortedList = head
+    current = head.next
+    head.next = None
+    fakeHead.next = head
+    while current:
+        nextNode = current.next
+        current.next = None
+        fakeHead = self.bump(fakeHead, current)
+        current = nextNode
+    return fakeHead.next
+
+```
+
 ## Sort List
 
 https://leetcode.com/problems/sort-list/
