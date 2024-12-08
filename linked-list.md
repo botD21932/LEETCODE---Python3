@@ -526,6 +526,28 @@ https://leetcode.com/problems/flatten-a-multilevel-doubly-linked-list/
 
 https://leetcode.com/problems/add-two-numbers-ii/
 
+```python
+def toNumber(self, head: ListNode, accum: int) -> int:
+    if not head.next:
+        return accum + head.val
+    return self.toNumber(head.next, (accum + head.val) * 10)
+
+
+def toList(self, number: int) -> ListNode:
+    line = str(number)
+    head = ListNode(line[0])
+    current = head
+    for i in range(1, len(line)):
+        current.next = ListNode(line[i])
+        current = current.next
+    return head
+
+
+def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+    return (self.toList(self.toNumber(l1, 0) + self.toNumber(l2, 0)))
+
+```
+
 ## Design Linked List
 
 https://leetcode.com/problems/design-linked-list/
