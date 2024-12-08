@@ -226,6 +226,21 @@ https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-charac
 
 https://leetcode.com/problems/two-sum-ii-input-array-is-sorted
 
+```python
+def twoSum(self, numbers: List[int], target: int) -> List[int]:
+    numbers = [elem for elem in enumerate(numbers)]
+    begin = 0
+    end = len(numbers) - 1
+    while begin != end:
+        if numbers[begin][1] + numbers[end][1] == target:
+            return [numbers[begin][0] + 1, numbers[end][0] + 1]
+        elif numbers[begin][1] + numbers[end][1] < target:
+            begin = begin + 1
+        else:
+            end = end - 1
+
+```
+
 ## Minimum Size Subarray Sum
 
 https://leetcode.com/problems/minimum-size-subarray-sum
