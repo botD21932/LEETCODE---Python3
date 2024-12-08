@@ -163,6 +163,23 @@ https://leetcode.com/problems/minimum-window-substring
 
 https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii
 
+```python
+def removeDuplicates(self, nums: List[int]) -> int:
+    slowPoint = 0
+    fastPoint = 0
+    while fastPoint < len(nums):
+        if fastPoint < 2:
+            fastPoint = fastPoint + 1
+            slowPoint = slowPoint + 1
+            continue
+        if nums[fastPoint] > nums[slowPoint - 2]:
+            nums[slowPoint] = nums[fastPoint]
+            slowPoint = slowPoint + 1
+        fastPoint = fastPoint + 1
+    return slowPoint
+
+```
+
 ## Partition List
 
 https://leetcode.com/problems/partition-list
