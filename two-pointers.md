@@ -188,6 +188,29 @@ def removeDuplicates(self, nums: List[int]) -> int:
 
 https://leetcode.com/problems/remove-element
 
+```python
+def removeElement(self, nums: List[int], val: int) -> int:
+    counter = 0
+    i = 0
+    while i < len(nums):
+        if nums[i] == val:
+            del(nums[i])
+        else:
+            counter = counter + 1
+            i = i + 1
+    return counter
+
+
+def removeElement(self, nums: List[int], val: int) -> int:
+    i = 0
+    for j in range(len(nums)):
+        if nums[j] != val:
+            nums[i] = nums[j]
+            i = i + 1
+    return i
+
+```
+
 ## Implement strStr()
 
 https://leetcode.com/problems/implement-strstr
