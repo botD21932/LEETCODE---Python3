@@ -424,6 +424,17 @@ https://leetcode.com/problems/intersection-of-two-arrays
 
 https://leetcode.com/problems/intersection-of-two-arrays-ii
 
+```python
+def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+    result = []
+    for elem in nums1:
+        if elem in nums2:
+            result.append(elem)
+            nums2.remove(elem)
+    return result
+
+```
+
 ## Sort Transformed Array
 
 https://leetcode.com/problems/sort-transformed-array
