@@ -297,6 +297,35 @@ def moveZeroes(self, nums: List[int]) -> None:
 
 https://leetcode.com/problems/find-the-duplicate-number
 
+```python
+for i in range(1, len(nums)):
+    if nums[i] in nums[0:i]:
+        return nums[i]
+
+
+def findDuplicate(self, nums: List[int]) -> int:
+    nums.sort()
+    for i in range(len(nums) - 1):
+        if nums[i] == nums[i + 1]:
+            return nums[i]
+
+
+def findDuplicate(self, nums: List[int]) -> int:
+    tortoise = nums[0]
+    hare = nums[0]
+    tortoise = nums[tortoise]
+    hare = nums[nums[hare]]
+    while tortoise != hare:
+        tortoise = nums[tortoise]
+        hare = nums[nums[hare]]
+    tortoise = nums[0]
+    while tortoise != hare:
+        tortoise = nums[tortoise]
+        hare = nums[hare]
+    return hare
+
+```
+
 ## Reverse String
 
 https://leetcode.com/problems/reverse-string
