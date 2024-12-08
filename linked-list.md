@@ -228,6 +228,28 @@ def partition(self, head: ListNode, x: int) -> ListNode:
 
 https://leetcode.com/problems/reverse-linked-list-ii/
 
+```python
+def reverseBetween(self, head: ListNode, m: int, n: int) -> ListNode:
+    fakeHead = ListNode(0)
+    fakeHead.next = head
+    tail = fakeHead
+    for i in range(m - 1):
+        tail = tail.next
+    previous = None
+    current = tail.next
+    newTail = current
+    next = None
+    for i in range(n - m + 1):
+        next = current.next
+        current.next = previous
+        previous = current
+        current = next
+    tail.next = previous
+    newTail.next = current
+    return fakeHead.next
+
+```
+
 ## Convert Sorted List to Binary Search Tree
 
 https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/
