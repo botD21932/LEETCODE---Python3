@@ -289,6 +289,22 @@ def partitionLabels(self, S):
 
 https://leetcode.com/problems/most-profit-assigning-work
 
+```python
+def maxProfitAssignment(self, difficulty, profit, worker):
+    jobs = list(zip(difficulty, profit))
+    jobs.sort()
+    answer = 0
+    i = 0
+    best = 0
+    for skill in sorted(worker):
+        while i < len(jobs) and skill >= jobs[i][0]:
+            best = max(best, jobs[i][1])
+            i = i + 1
+        answer = answer + best
+    return answer
+
+```
+
 ## Count Unique Characters of All Substrings of a Given String
 
 https://leetcode.com/problems/count-unique-characters-of-all-substrings-of-a-given-string
