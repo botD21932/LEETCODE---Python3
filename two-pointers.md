@@ -263,6 +263,25 @@ https://leetcode.com/problems/boats-to-save-people
 
 https://leetcode.com/problems/fruit-into-baskets
 
+```python
+def totalFruit(self, tree: List[int]) -> int:
+    blocks = [(k, len(list(v))) for k, v in itertools.groupby(tree)]
+    answer = i = 0
+    while i < len(blocks):
+        types, weight = set(), 0
+        for j in range(i, len(blocks)):
+            types.add(blocks[j][0])
+            weight = weight + blocks[j][1]
+            if len(types) >= 3:
+                i = j - 1
+                break
+            answer = max(answer, weight)
+        else:
+            break
+    return answer
+
+```
+
 ## 3Sum With Multiplicity
 
 https://leetcode.com/problems/3sum-with-multiplicity
