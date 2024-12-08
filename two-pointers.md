@@ -232,6 +232,25 @@ https://leetcode.com/problems/merge-sorted-array
 
 https://leetcode.com/problems/valid-palindrome
 
+```python
+def isPalindrome(self, s: str) -> bool:
+    letters = "abcdefghijklmnopqrstuvwxyz1234567890"
+    s = s.lower()
+    left = 0
+    right = len(s) - 1
+    while left < right:
+        while left < right and s[left] not in letters:
+            left = left + 1
+        while left < right and s[right] not in letters:
+            right = right - 1
+        if left < right and s[left] != s[right]:
+            return False
+        left = left + 1
+        right = right - 1
+    return True
+
+```
+
 ## Linked List Cycle
 
 https://leetcode.com/problems/linked-list-cycle
