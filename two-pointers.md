@@ -279,6 +279,20 @@ https://leetcode.com/problems/3sum-smaller
 
 https://leetcode.com/problems/move-zeroes
 
+```python
+def moveZeroes(self, nums: List[int]) -> None:
+    counter = 0
+    i = 0
+    while i < len(nums):
+        if nums[i] == 0:
+            nums.remove(0)
+            counter = counter + 1
+        else:
+            i = i + 1
+    nums = nums.extend([0]*counter)
+
+```
+
 ## Find the Duplicate Number
 
 https://leetcode.com/problems/find-the-duplicate-number
