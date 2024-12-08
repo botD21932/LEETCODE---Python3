@@ -729,6 +729,21 @@ https://leetcode.com/problems/split-linked-list-in-parts/
 
 https://leetcode.com/problems/linked-list-components/
 
+```python
+def numComponents(self, head: ListNode, G: List[int]) -> int:
+    current = head
+    counter = 0
+    while current:
+        if current.val in G:
+            while current and current.val in G:
+                current = current.next
+            counter = counter + 1
+        else:
+            current = current.next
+    return counter
+
+```
+
 ## Middle of the Linked List
 
 https://leetcode.com/problems/middle-of-the-linked-list/
