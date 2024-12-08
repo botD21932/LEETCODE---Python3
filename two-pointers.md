@@ -286,6 +286,24 @@ def twoSum(self, numbers: List[int], target: int) -> List[int]:
 
 https://leetcode.com/problems/minimum-size-subarray-sum
 
+```python
+def minSubArrayLen(self, s: int, nums: List[int]) -> int:
+    answer = float('inf')
+    left = 0
+    summary = 0
+    for i in range(len(nums)):
+        summary = summary + nums[i]
+        while summary >= s:
+            answer = min(answer, i + 1 - left)
+            summary = summary - nums[left]
+            left = left + 1
+    if answer < float('inf'):
+        return answer
+    else:
+        return 0
+
+```
+
 ## Palindrome Linked List
 
 https://leetcode.com/problems/palindrome-linked-list
