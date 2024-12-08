@@ -353,6 +353,33 @@ https://leetcode.com/problems/reverse-string
 
 https://leetcode.com/problems/reverse-vowels-of-a-string
 
+```python
+def reverseVowels(self, s: str) -> str:
+    if not s or len(s) == 1:
+        return s
+    vowels = "AaEeIiOoUu"
+    left = 0
+    right = len(s) - 1
+    resultLeft = []
+    resultRight = []
+    while left < right:
+        while left < right + 1 and s[left] not in vowels:
+            resultLeft.append(s[left])
+            left = left + 1
+        while left < right and s[right] not in vowels:
+            resultRight.insert(0, s[right])
+            right = right - 1
+        if left < right and s[right] in vowels:
+            resultLeft.append(s[right])
+            resultRight.insert(0, s[left])
+            left = left + 1
+            right = right - 1
+        if left == right:
+            resultLeft.append(s[left])
+    return ''.join(resultLeft + resultRight)
+
+```
+
 ## Intersection of Two Arrays
 
 https://leetcode.com/problems/intersection-of-two-arrays
