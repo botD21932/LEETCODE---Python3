@@ -343,6 +343,21 @@ def longestMountain(self, A: List[int]) -> int:
 
 https://leetcode.com/problems/boats-to-save-people
 
+```python
+def numRescueBoats(self, people: List[int], limit: int) -> int:
+    people.sort()
+    result = 0
+    firstPoint = 0
+    secondPoint = len(people) - 1
+    while firstPoint <= secondPoint:
+        result = result + 1
+        if people[firstPoint] + people[secondPoint] <= limit:
+            firstPoint = firstPoint + 1
+        secondPoint = secondPoint - 1
+    return result
+
+```
+
 ## Fruit Into Baskets
 
 https://leetcode.com/problems/fruit-into-baskets
