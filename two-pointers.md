@@ -398,6 +398,29 @@ https://leetcode.com/problems/linked-list-cycle
 
 https://leetcode.com/problems/linked-list-cycle-ii
 
+```python
+def detectCycle(self, head: ListNode) -> ListNode:
+    if not head:
+        return None
+    slowPointer = head
+    fastPointer = head.next
+    while(fastPointer and fastPointer != slowPointer):
+        fastPointer = fastPointer.next
+        if not fastPointer:
+            return None
+        slowPointer = slowPointer.next
+        fastPointer = fastPointer.next
+    if(slowPointer == fastPointer):
+        current = head
+        fastPointer = fastPointer.next
+        while current != fastPointer:
+            current = current.next
+            fastPointer = fastPointer.next
+        return current
+    return None
+    
+```
+
 ## Longest Substring with At Most Two Distinct Characters
 
 https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters
