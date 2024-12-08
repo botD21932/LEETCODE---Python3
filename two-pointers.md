@@ -228,6 +228,17 @@ https://leetcode.com/problems/partition-list
 
 https://leetcode.com/problems/merge-sorted-array
 
+```python
+def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+    p = m
+    for i in range(n):
+        nums1[p] = nums2[i]
+        p += 1
+    nums1[0: m+n] = sorted(nums1[0: m+n])
+    return nums1
+
+```
+
 ## Valid Palindrome
 
 https://leetcode.com/problems/valid-palindrome
