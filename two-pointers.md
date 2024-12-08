@@ -111,6 +111,42 @@ https://leetcode.com/problems/substring-with-concatenation-of-all-words
 
 https://leetcode.com/problems/trapping-rain-water
 
+```python
+def trap(self, height: List[int]) -> int:
+    if not height:
+        return 0
+    maxHeight = max(height)
+    result = 0
+    for i in range(1, maxHeight + 1):
+        left = 0
+        right = len(height) - 1
+        while height[left] < i:
+            left = left + 1
+        while height[right] < i:
+            right = right - 1
+        # print(i, left, right, result)
+        while left < right:
+            if height[left] < i:
+                result = result + 1
+                # print(i,  height[left], left, right, result)
+            left = left + 1
+    return result
+
+
+def trap(self, height: List[int]) -> int:
+    result = 0
+    for i in range(1, len(height)):
+        left = height[i]
+        for j in range(i):
+            left = max(left, height[j])
+        right = height[i]
+        for j in range(i+1, len(height)):
+            right = max(right, height[j])
+        result = result + min(left, right) - height[i]
+    return result
+
+```
+
 ## Rotate List
 
 https://leetcode.com/problems/rotate-list
